@@ -51,4 +51,4 @@ def remove_dept(dept_name):
 
 def display_dept(company):
     for department_name in company.keys():
-        print(department_name, end=" ")
+        print(department_name.values())
