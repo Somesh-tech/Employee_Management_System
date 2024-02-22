@@ -50,5 +50,5 @@ def remove_dept(dept_name):
         print(f"Department {dept_name} not found in the company")
 
 def display_dept(company):
-    for department_name in company.keys():
-        print(department_name.values())
+    for dept_name,dept_details in company.items():
+        print(f"{dept_name} : {dept_details}")
