@@ -10,6 +10,7 @@ while True:
                 5. Remove Department
                 6. Show All Department Details
                 7. Show all the employees
+                0. Exit the program
                 """
     
 
@@ -68,6 +69,8 @@ while True:
         print(employee_details)
         print(60 * "-")
 
+    if (choice) == "0":
+        break
     if (choice) == "1":
         add_employee()
     if (choice) == "2":
