@@ -34,11 +34,20 @@ class Department(Employee):
     @classmethod
     def add_emp(self, name:str, emp_id:int, title:str, dept:str):
         new_employee = Employee(name=name, emp_id=emp_id, title=title, dept=dept)
-        dept_details[new_employee.emp_dept] = [
-            new_employee.emp_title,
-            new_employee.emp_name,
-            new_employee.emp_id,
-        ]
+        if new_employee.emp_dept not in dept_details:
+            dept_details[new_employee.emp_dept] = [
+                new_employee.emp_title,
+                new_employee.emp_name,
+                new_employee.emp_id,
+            ]
+        else:
+            dept_details[new_employee.emp_dept].append(
+                [
+                new_employee.emp_title,
+                new_employee.emp_name,
+                new_employee.emp_id,
+            ]
+            )    
         if emp_id not in employee_details.keys():
             employee_details[emp_id] = [
                 new_employee.emp_title,
@@ -47,7 +56,6 @@ class Department(Employee):
             ]
         else:
             ("Duplicate emp_id cannot exists !")
-        print(employee_details)
         return {
             "Emp_name": new_employee.emp_name,
             "Emp_id": new_employee.emp_id,
@@ -76,14 +84,14 @@ def add_dept(department :str):
             company[f"{department}"] = details
         else:
             company[f"{department}"] = None
-            print("Its a new Department hence no employees are allocated as of now. ")
 
 
 def remove_dept(dept_name:str):
     if dept_name in company:
         company.pop(dept_name)
+        print(f"{dept_name} successfully Removed !")
     else:
-        print(f"Department {dept_name} not found in the company")
+        print(f"Department {dept_name} not found in the company. ")
 
 
 def display_dept():
